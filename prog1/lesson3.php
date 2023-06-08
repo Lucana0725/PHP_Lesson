@@ -8,6 +8,12 @@ echo '----------' . PHP_EOL;
 // ここまで
 
 // $priceと$taxRateを使って"税込価格は**円です"と出力せよ
-$taxInPrice = $price + $price * $taxRate;
-echo "税込価格は{$taxInPrice}円です";
+// $taxInPrice = $price + $price * $taxRate;
+// echo "税込価格は{$taxInPrice}円です";
+
+// 別の回答
+function taxInPrice($price, $taxRate) {
+  return $price + $price * $taxRate;
+}
+echo "税込価格は" . taxInPrice($price, $taxRate) . "円です";
 ?>
