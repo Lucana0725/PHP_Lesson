@@ -10,7 +10,10 @@ $menus = array(
 // $namesを使って**は++円です と一件ずつ改行して順番どおりに表示せよ
 
 foreach ($menus as $menu) {
-  echo "{$menu['name']}は{$menu['price']}円です" . PHP_EOL;
+  // echo "{$menu['name']}は{$menu['price']}円です" . PHP_EOL;
+
+  // または
+  echo $menu['name'] . "は" . $menu['price'] . "円です" . PHP_EOL;
 }
 
 
