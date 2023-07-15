@@ -14,12 +14,45 @@
   //   echo 'Invalid password';
   // }
 
+  // // 土台
+  // echo "Enter your password" . PHP_EOL;
 
-  echo "Enter your password\n";
-  $handle = fopen("php://stdin", "r");
-  $password = fgets($handle);
+  // // fopen()を使って'php://stdin'を開いて標準入力を開く。入力値を$handleに格納
+  // $handle = fopen("php://stdin", "r");
+
+  // // 標準入力値$handleをfgetsで取得
+  // $password = fgets($handle);
+
+  // // ファイルポインタを閉じる
+  // fclose($handle);
+
+  // echo "Entered password: " . $password;
+
+  
+  
+  
+  
+  // 以下問題
+  // 用意されたパスワード
+  $password = 'guitar';
+
+  echo "パスワードを入力してください" . PHP_EOL;
+
+  // 入力値の受け付け関連
+  $handle = fopen('php://stdin', 'r');
+  // $inputLine = fgets($handle);
+  $inputLine = trim(fgets($handle));
   fclose($handle);
 
-  echo "Entered password: " . $password;
+  echo "入力されたパスワードは{$inputLine}です" . PHP_EOL;
+  // パスワードが合っているかどうか判定
+  if ($inputLine == $password) {
+    // echo $inputLine . PHP_EOL;
+    echo "パスワードを認証しました";
+  } else {
+    // echo $inputLine . PHP_EOL;
+    echo "パスワードが違います";
+  }
+
 
 ?>
