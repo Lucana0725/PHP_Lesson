@@ -1,0 +1,11 @@
+version: "3"
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:80
+    volumes:
+      - ./apache2.conf:/etc/apache2/apache2.conf
+      - ./index.php:/var/www/html/index.php
