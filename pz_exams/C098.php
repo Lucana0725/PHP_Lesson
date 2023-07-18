@@ -15,8 +15,8 @@
     $numOfPlayers = intval(trim(fgets($input)));
     fclose($input);
 
-    // プレイ人数に負の数や10以上の値が入った場合、処理を中断する
-    if($numOfPlayers < 2 || $numOfPlayers > 9) {
+    // プレイ人数に負の数や10以上の値、小数が入った場合、処理を中断する
+    if(!ctype_digit($numOfPlayers) || $numOfPlayers < 2 || $numOfPlayers > 9) {
       echo '不正な値が入力されました。処理を中止します。';
       exit;
     }
