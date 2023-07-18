@@ -25,13 +25,19 @@
     $timesOfPlay = intval(trim(fgets($input)));
     fclose($input);
 
-    echo '次に、どのプレイヤーがどのプレイヤーに';
+    echo '次に、「どのプレイヤーが」「どのプレイヤーに」「何個パスするか」を半角スペース区切りで入力してください。' . PHP_EOL;
+    $input = fopen('php://stdin', 'r');
+    $playing = trim(fgets($input));
+    fclose($input);
 
 
 
     // 入力確認用
+    echo PHP_EOL;
+    echo '入力内容';
     echo "プレイ人数：{$numOfPlayers}人" . PHP_EOL;
-    echo "初期所有数：{$playerHas}個";
+    echo "初期所有数：{$playerHas}個" . PHP_EOL;
+    echo "プレイ内容:{$playing}";
   }
 
   echo '両隣入りのどちらかの人にボールをパスするパス回しゲームをプレイし、最終的に各々が所有しているボールの個数を算出するプログラムです。' . PHP_EOL;
