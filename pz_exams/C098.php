@@ -12,14 +12,17 @@
     echo PHP_EOL;
     echo 'まずはプレイ人数を入力してください。(テスト用に3を入力)' . PHP_EOL;
     $input = fopen('php://stdin', 'r');
-    $numOfPlayers = intval(trim(fgets($input)));
+    $numOfPlayers = trim(fgets($input));
     fclose($input);
 
     // プレイ人数に負の数や10以上の値、小数が入った場合、処理を中断する
-    if(!ctype_digit($numOfPlayers) || $numOfPlayers < 2 || $numOfPlayers > 9) {
+    // if(!ctype_digit($numOfPlayers) && ($numOfPlayers < 2 || $numOfPlayers > 9)) {
+    // if($numOfPlayers <= 2 || $numOfPlayers >= 10 || is_float($numOfPlayers)) {
+    if(!filter_var($numOfPlayers, FILTER_VALIDATE_INT) || $numOfPlayers < 3 || $numOfPlayers > 9) {  // filter_var()を使って$numOfPlayerが整数かどうかを判定、これで小数を弾く
       echo '不正な値が入力されました。処理を中止します。';
       exit;
     }
+    echo gettype($numOfPlayers);
 
     echo '次に各プレイヤーの所持数を入力してください。' . PHP_EOL;
     $input = fopen('php://stdin', 'r');
@@ -51,7 +54,7 @@
     
   }
 
-  echo '両隣入りのどちらかの人にボールをパスするパス回しゲームをプレイし、最終的に各々が所有しているボールの個数を算出するプログラムです。' . PHP_EOL;
+  echo '両隣りのどちらかの人にボールをパスするパス回しゲームをプレイし、最終的に各々が所有しているボールの個数を算出するプログラムです。' . PHP_EOL;
   rules();
   userInputs();
 
