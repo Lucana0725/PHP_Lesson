@@ -46,15 +46,26 @@
     $timesOfPlay = trim(fgets($input));
     fclose($input);
 
+    // 入力値が0未満の場合弾く処理
     if(!filter_var($timesOfPlay, FILTER_VALIDATE_INT) || $timesOfPlay < 1) {
       echo '不正な値が入力されました。処理を中止します。' . PHP_EOL;
       exit;
     }
 
     echo '次に、「どのプレイヤーが」「どのプレイヤーに」「何個パスするか」を半角スペース区切りで入力してください。' . PHP_EOL;
-    $input = fopen('php://stdin', 'r');
-    $playing = trim(fgets($input));
-    fclose($input);
+    for($i = 0; $i < $timesOfPlay; $i++) {
+      echo ($i + 1) . "回目のパス" . PHP_EOL;
+      $input = fopen('php://stdin', 'r');
+      $playing = trim(fgets($input));
+      fclose($input);
+      
+      // 半角スペース区切りになっていない場合に処理を中断したいという処理
+      if(!preg_match('/^\d+\s+\d+\s+\d+$/', $playing)) {
+        echo '3つの要件を半角スペース区切りで渡されていません。処理は中止されます。';
+        exit;
+      }
+    }
+
 
 
 
@@ -104,6 +115,13 @@
   // } else {
   //   echo gettype($num) . PHP_EOL;
   //   echo "{$num} is not INT";
+  // }
+
+  // $num = '1, 2, 3';
+  // if(preg_match('/^\d+\s+\d+\s+\d$/', $num)) {
+  //   echo '半角スペース区切りで3つの数字が渡されています';
+  // } else {
+  //   echo 'パターンにマッチしません';
   // }
 
 ?>
