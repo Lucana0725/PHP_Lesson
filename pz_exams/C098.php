@@ -42,8 +42,14 @@
 
     echo '次に、プレイ(パス回し)回数を入力してください。(テスト用に3を入力)' . PHP_EOL;
     $input = fopen('php://stdin', 'r');
-    $timesOfPlay = intval(trim(fgets($input)));
+    // $timesOfPlay = intval(trim(fgets($input)));  // 入力値が正の整数かを判定するためintval()はダメ
+    $timesOfPlay = trim(fgets($input));
     fclose($input);
+
+    if(!filter_var($timesOfPlay, FILTER_VALIDATE_INT) || $timesOfPlay < 1) {
+      echo '不正な値が入力されました。処理を中止します。' . PHP_EOL;
+      exit;
+    }
 
     echo '次に、「どのプレイヤーが」「どのプレイヤーに」「何個パスするか」を半角スペース区切りで入力してください。' . PHP_EOL;
     $input = fopen('php://stdin', 'r');
