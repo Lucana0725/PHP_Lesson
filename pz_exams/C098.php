@@ -1,5 +1,7 @@
 <?php
 
+$numOfPlayers;
+
   function rules() {
     echo PHP_EOL;
     echo '~ルール説明~' . PHP_EOL;
@@ -9,6 +11,7 @@
   }
 
   function userInputs() {
+    // プレイ人数の入力
     echo PHP_EOL;
     echo 'まずはプレイ人数を入力してください。(テスト用に3を入力)' . PHP_EOL;
     $input = fopen('php://stdin', 'r');
@@ -20,12 +23,17 @@
       echo '不正な値が入力されました。処理を中止します。';
       exit;
     }
-    // echo gettype($numOfPlayers);  // $numOfPlayersの型を検出
 
 
-    // $numOfPlayers分だけ所持数を入力させる
+
+
+
+
+    // プレイヤーの初期所持数の入力
     echo '次に各プレイヤーの所持数を入力してください。' . PHP_EOL;
-    $playerHasList = array();  // 各プレイヤーの初期所有数を保持するためのから配列
+    $playerHasList = array();  // 各プレイヤーの初期所有数を保持するための空配列
+    
+    // $numOfPlayers分だけ所持数を入力させる
     for($i = 0; $i < $numOfPlayers; $i++) {
       echo ($i + 1) . "人目の所持数を入力してください：" . PHP_EOL;
       $input = fopen('php://stdin', 'r');
@@ -43,6 +51,11 @@
     }
 
 
+
+
+
+
+    // パス回しの回数
     echo '次に、プレイ(パス回し)回数を入力してください。' . PHP_EOL;
     $input = fopen('php://stdin', 'r');
     // $timesOfPlay = intval(trim(fgets($input)));  // 入力値が正の整数かを判定するためintval()はダメ
@@ -55,6 +68,12 @@
       exit;
     }
 
+
+
+
+
+
+    // ゲームのプレイ内容
     echo '次に、「どのプレイヤーが」「どのプレイヤーに」「何個パスするか」を半角スペース区切りで入力してください。' . PHP_EOL;
     $playingList = array();
 
@@ -75,15 +94,29 @@
 
 
 
-    // 入力確認用(丁寧な表記)
+
+
+    // ゲームプレイの処理
+    
+
+
+
+
+
+
+
+
+    // // 入力確認用(丁寧な表記)
     // echo PHP_EOL;
     // echo '入力内容：' . PHP_EOL;
-    // // echo "プレイ人数：{$numOfPlayers}人" . PHP_EOL;
-    // // echo "初期所有数：{$playerHas}個" . PHP_EOL;
+    // echo "プレイ人数：{$numOfPlayers}人" . PHP_EOL;
+    // echo "初期所有数：{$playerHas}個" . PHP_EOL;
     // for($i = 0; $i < $numOfPlayers; $i++) {
-    //   // echo ($i + 1) . "番目のプレイヤーの所持数：{$playerHasList[$i]}個" . PHP_EOL;
+    //   echo ($i + 1) . "番目のプレイヤーの所持数：{$playerHasList[$i]}個" . PHP_EOL;
     // }
-    // echo "プレイ内容:{$playing}";
+    // for($i = 0; $i < $timesOfPlay; $i++) {
+    //   echo ($i + 1) . "回目のプレイ内容：{$playingList[$i]}" . PHP_EOL;
+    // }
 
     // 入力確認用(より問題に近い表示)
     echo PHP_EOL;
@@ -92,7 +125,7 @@
     for($i = 0; $i < $numOfPlayers; $i++) {
       echo $playerHasList[$i] . PHP_EOL;
     }
-    // echo $playing . PHP_EOL;
+
     for($i = 0; $i < $timesOfPlay; $i++) {
       echo $playingList[$i] . PHP_EOL;
     }
@@ -101,11 +134,6 @@
 
 
 
-
-
-  function executions() {
-    
-  }
 
   echo PHP_EOL;
   echo '両隣りのどちらかの人にボールをパスするパス回しゲームをプレイし、最終的に各々が所有しているボールの個数を算出するプログラムです。' . PHP_EOL;
