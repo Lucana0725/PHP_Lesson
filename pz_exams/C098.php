@@ -16,8 +16,6 @@
     fclose($input);
 
     // プレイ人数に負の数や10以上の値、小数が入った場合、処理を中断する
-    // if(!ctype_digit($numOfPlayers) && ($numOfPlayers < 2 || $numOfPlayers > 9)) {
-    // if($numOfPlayers <= 2 || $numOfPlayers >= 10 || is_float($numOfPlayers)) {
     if(!filter_var($numOfPlayers, FILTER_VALIDATE_INT) || $numOfPlayers < 3 || $numOfPlayers > 9) {  // filter_var()を使って$numOfPlayerが整数かどうかを判定、これで小数を弾く
       echo '不正な値が入力されました。処理を中止します。';
       exit;
@@ -66,5 +64,35 @@
   rules();
   userInputs();
 
+
+
+
+  // メソッドなど試し
+  // $input = '-123';
+  // if(ctype_digit($input)) {
+  //   echo "{$input}は整数です" . PHP_EOL;
+  // } else {
+  //   echo "{$input}は整数ではありません" . PHP_EOL;
+  // }
+
+  // $input = '-123';
+  // if(filter_var($input, FILTER_VALIDATE_INT)) {
+  //   echo "{$input}は整数です" . PHP_EOL;
+  // } else {
+  //   echo "{$input}は整数ではありません" . PHP_EOL;
+  // }
+
+  // echo 'type your number' . PHP_EOL;
+  // $input = fopen('php://stdin', 'r');
+  // $num = trim(fgets($input));
+  // fclose($input);
+
+  // if(filter_var($num, FILTER_VALIDATE_INT)) {
+  //   echo "{$num}は" . gettype($num) . "型です" . PHP_EOL;
+  //   echo "{$num} is INT";
+  // } else {
+  //   echo gettype($num) . PHP_EOL;
+  //   echo "{$num} is not INT";
+  // }
 
 ?>
