@@ -22,16 +22,21 @@
     }
     // echo gettype($numOfPlayers);  // $numOfPlayersの型を検出
 
-    echo '次に各プレイヤーの所持数を入力してください。' . PHP_EOL;
-    $input = fopen('php://stdin', 'r');
-    // $playerHas = intval(trim(fgets($input)));  // intval()があると小数が渡ってきても整数値型にキャストしてしまうのでダメ。
-    $playerHas = trim(fgets($input));
-    fclose($input);
 
-    // 所持数がマイナス値や小数になった場合処理を中断させる
-    if(!filter_var($playerHas, FILTER_VALIDATE_INT) || $playerHas < 0) {
-      echo '不正な値が入力されました。処理を中止します。';
-      exit;
+    // $numOfPlayers分だけ所持数を入力させる
+    echo '次に各プレイヤーの所持数を入力してください。' . PHP_EOL;
+    for($i = 0; $i < $numOfPlayers; $i++) {
+      echo ($i + 1) . "人目の所持数を入力してください：" . PHP_EOL;
+      $input = fopen('php://stdin', 'r');
+      // $playerHas = intval(trim(fgets($input)));  // intval()があると小数が渡ってきても整数値型にキャストしてしまうのでダメ。
+      $playerHas = trim(fgets($input));
+      fclose($input);
+
+      // 所持数がマイナス値や小数になった場合処理を中断させる
+      if(!filter_var($playerHas, FILTER_VALIDATE_INT) || $playerHas < 0) {
+        echo '不正な値が入力されました。処理を中止します。';
+        exit;
+      }
     }
 
 
