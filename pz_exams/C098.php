@@ -96,16 +96,6 @@ $numOfPlayers;
 
 
 
-    // ゲームプレイの処理
-    
-
-
-
-
-
-
-
-
     // // 入力確認用(丁寧な表記)
     // echo PHP_EOL;
     // echo '入力内容：' . PHP_EOL;
@@ -129,6 +119,21 @@ $numOfPlayers;
     for($i = 0; $i < $timesOfPlay; $i++) {
       echo $playingList[$i] . PHP_EOL;
     }
+
+
+
+
+
+    // いよいよゲームプレイ！！
+    // ゲームプレイの各処理の内訳
+    echo PHP_EOL;
+    echo '$playerHasListの内訳' . PHP_EOL;
+    print_r($playerHasList) . PHP_EOL;
+    echo PHP_EOL;
+
+    echo '$playingListの内訳' . PHP_EOL;
+    print_r($playingList) . PHP_EOL;
+    echo PHP_EOL;
   }
 
 
