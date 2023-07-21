@@ -43,7 +43,7 @@
     }
 
 
-    echo '次に、プレイ(パス回し)回数を入力してください。(テスト用に3を入力)' . PHP_EOL;
+    echo '次に、プレイ(パス回し)回数を入力してください。' . PHP_EOL;
     $input = fopen('php://stdin', 'r');
     // $timesOfPlay = intval(trim(fgets($input)));  // 入力値が正の整数かを判定するためintval()はダメ
     $timesOfPlay = trim(fgets($input));
@@ -56,6 +56,8 @@
     }
 
     echo '次に、「どのプレイヤーが」「どのプレイヤーに」「何個パスするか」を半角スペース区切りで入力してください。' . PHP_EOL;
+    $playingList = array();
+
     for($i = 0; $i < $timesOfPlay; $i++) {
       echo ($i + 1) . "回目のパス" . PHP_EOL;
       $input = fopen('php://stdin', 'r');
@@ -67,6 +69,7 @@
         echo '3つの要件を半角スペース区切りで渡されていません。処理は中止されます。';
         exit;
       }
+      $playingList[] = $playing;
     }
 
 
@@ -85,18 +88,26 @@
     // 入力確認用(より問題に近い表示)
     echo PHP_EOL;
     echo '#デバッグ用入力確認表示#' . PHP_EOL;
-    echo "{$numOfPlayers}" . PHP_EOL;
+    echo $numOfPlayers . PHP_EOL;
     for($i = 0; $i < $numOfPlayers; $i++) {
-      echo "{$playerHasList[$i]}" . PHP_EOL;
+      echo $playerHasList[$i] . PHP_EOL;
     }
-    echo "プレイ内容:{$playing}";
+    // echo $playing . PHP_EOL;
+    for($i = 0; $i < $timesOfPlay; $i++) {
+      echo $playingList[$i] . PHP_EOL;
+    }
   }
+
+
+
+
 
 
   function executions() {
     
   }
 
+  echo PHP_EOL;
   echo '両隣りのどちらかの人にボールをパスするパス回しゲームをプレイし、最終的に各々が所有しているボールの個数を算出するプログラムです。' . PHP_EOL;
   rules();
   userInputs();
