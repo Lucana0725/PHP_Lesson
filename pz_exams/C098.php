@@ -25,6 +25,7 @@
 
     // $numOfPlayers分だけ所持数を入力させる
     echo '次に各プレイヤーの所持数を入力してください。' . PHP_EOL;
+    $playerHasList = array();  // 各プレイヤーの初期所有数を保持するためのから配列
     for($i = 0; $i < $numOfPlayers; $i++) {
       echo ($i + 1) . "人目の所持数を入力してください：" . PHP_EOL;
       $input = fopen('php://stdin', 'r');
@@ -37,6 +38,8 @@
         echo '不正な値が入力されました。処理を中止します。';
         exit;
       }
+
+      $playerHasList[] = $playerHas;  // 各プレイヤーの初期所持数を追加
     }
 
 
@@ -69,11 +72,23 @@
 
 
 
-    // 入力確認用
+    // 入力確認用(丁寧な表記)
+    // echo PHP_EOL;
+    // echo '入力内容：' . PHP_EOL;
+    // // echo "プレイ人数：{$numOfPlayers}人" . PHP_EOL;
+    // // echo "初期所有数：{$playerHas}個" . PHP_EOL;
+    // for($i = 0; $i < $numOfPlayers; $i++) {
+    //   // echo ($i + 1) . "番目のプレイヤーの所持数：{$playerHasList[$i]}個" . PHP_EOL;
+    // }
+    // echo "プレイ内容:{$playing}";
+
+    // 入力確認用(より問題に近い表示)
     echo PHP_EOL;
-    echo '入力内容';
-    echo "プレイ人数：{$numOfPlayers}人" . PHP_EOL;
-    echo "初期所有数：{$playerHas}個" . PHP_EOL;
+    echo '#デバッグ用入力確認表示#' . PHP_EOL;
+    echo "{$numOfPlayers}" . PHP_EOL;
+    for($i = 0; $i < $numOfPlayers; $i++) {
+      echo "{$playerHasList[$i]}" . PHP_EOL;
+    }
     echo "プレイ内容:{$playing}";
   }
 
