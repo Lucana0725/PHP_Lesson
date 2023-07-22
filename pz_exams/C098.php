@@ -86,7 +86,8 @@
         echo '3つの要件を半角スペース区切りで渡されていません。処理は中止されます。';
         exit;
       }
-      $playingList[] = $playing;
+      // $playingList[] = $playing;
+      $playingList[] = explode(' ', $playing);  // 半角スペース区切りで与えられる$playingを半角スペース区切りで分割して$playingListに追加
     }
 
 
@@ -109,14 +110,14 @@
     // 入力確認用(より問題に近い表示)
     echo PHP_EOL;
     echo '#デバッグ用入力確認表示#' . PHP_EOL;
-    echo $numOfPlayers . PHP_EOL;
-    for($i = 0; $i < $numOfPlayers; $i++) {
-      echo $playerHasList[$i] . PHP_EOL;
-    }
+    // echo $numOfPlayers . PHP_EOL;
+    // for($i = 0; $i < $numOfPlayers; $i++) {
+    //   echo $playerHasList[$i] . PHP_EOL;
+    // }
 
-    for($i = 0; $i < $timesOfPlay; $i++) {
-      echo $playingList[$i] . PHP_EOL;
-    }
+    // for($i = 0; $i < $timesOfPlay; $i++) {
+    //   echo $playingList[$i] . PHP_EOL;
+    // }
 
 
 
@@ -140,6 +141,27 @@
     echo '各プレイヤーの初期所持数' . PHP_EOL;
     print_r($playerHasWithNumber);
 
+
+    // パスの処理
+    for($i = 0; $i < $timesOfPlay; $i++) {
+      $server = $playingList[$i][0];  // パスする人
+      $receiver = $playingList[$i][1];  // パスを受ける人
+      $amountOfPass = $playingList[$i][2];  // 宣言数
+
+      if($playerHasWithNumber[$server] >= $amountOfPass) {
+        $playerHasWithNumber[$server] -= $amountOfPass;
+        $playerHasWithNumber[$receiver] += $amountOfPass;
+      } else {
+        $playerHasWithNumber[$receiver] += $playerHasWithNumber[$server];
+        $playerHasWithNumber[$server] = 0;
+      }
+    }
+
+
+    echo '答え' . PHP_EOL;
+    foreach($playerHasWithNumber as $result) {
+      echo $result . PHP_EOL;
+    }
   }
 
 
