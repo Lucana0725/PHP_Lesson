@@ -1,7 +1,5 @@
 <?php
 
-$numOfPlayers;
-
   function rules() {
     echo PHP_EOL;
     echo '~ルール説明~' . PHP_EOL;
@@ -134,6 +132,14 @@ $numOfPlayers;
     echo '$playingListの内訳' . PHP_EOL;
     print_r($playingList) . PHP_EOL;
     echo PHP_EOL;
+
+    $playerNumber = range(1, $numOfPlayers);  // プレイヤーに1から始まる番号を与えて管理しやすくする(0スタートなので)
+    // echo '$playerNumber' . PHP_EOL;
+    // print_r($playerNumber);
+    $playerHasWithNumber = array_combine($playerNumber, $playerHasList);  // 各プレイヤーの初期所持数を、1から始まるプレイヤー番号で管理するよう配列を結合
+    echo '各プレイヤーの初期所持数' . PHP_EOL;
+    print_r($playerHasWithNumber);
+
   }
 
 
@@ -182,5 +188,15 @@ $numOfPlayers;
   // } else {
   //   echo 'パターンにマッチしません';
   // }
+
+    // $num = '3';
+    // echo gettype($num) . PHP_EOL;
+    // $array1 = range(1, $num);
+    // $array2 = array(2, 4, 6);
+    // print_r($array1);
+    // print_r($array2);
+
+    // $array3 = array_combine($array1, $array2);
+    // print_r($array3);
 
 ?>
