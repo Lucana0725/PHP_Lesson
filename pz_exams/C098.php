@@ -146,9 +146,17 @@
     }
 
 
-    echo '答え' . PHP_EOL;
-    foreach($playerHasWithNumber as $result) {
-      echo $result . PHP_EOL;
+    // 答えの表示(問題解答)
+    // echo '答え' . PHP_EOL;
+    // foreach($playerHasWithNumber as $result) {
+    //   echo $result . PHP_EOL;
+    // }
+
+    // ゲームをプレイしたっぽい表示の仕方(プレイヤー1の所持数：n個 みたいな)
+    echo PHP_EOL;
+    echo '～プレイ結果～' . PHP_EOL;
+    for($i = 0; $i < $numOfPlayers; $i++) {
+      echo 'プレイヤー' . ($i + 1) . 'の所持数：' . $playerHasWithNumber[$i+1] . '個' . PHP_EOL;
     }
   }
 
