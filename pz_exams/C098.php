@@ -35,7 +35,6 @@
     for($i = 0; $i < $numOfPlayers; $i++) {
       echo ($i + 1) . "人目の所持数を入力してください：" . PHP_EOL;
       $input = fopen('php://stdin', 'r');
-      // $playerHas = intval(trim(fgets($input)));  // intval()があると小数が渡ってきても整数値型にキャストしてしまうのでダメ。
       $playerHas = trim(fgets($input));
       fclose($input);
 
@@ -56,7 +55,6 @@
     // パス回しの回数
     echo '次に、プレイ(パス回し)回数を入力してください。' . PHP_EOL;
     $input = fopen('php://stdin', 'r');
-    // $timesOfPlay = intval(trim(fgets($input)));  // 入力値が正の整数かを判定するためintval()はダメ
     $timesOfPlay = trim(fgets($input));
     fclose($input);
 
@@ -108,8 +106,8 @@
     // }
 
     // 入力確認用(より問題に近い表示)
-    echo PHP_EOL;
-    echo '#デバッグ用入力確認表示#' . PHP_EOL;
+    // echo PHP_EOL;
+    // echo '#デバッグ用入力確認表示#' . PHP_EOL;
     // echo $numOfPlayers . PHP_EOL;
     // for($i = 0; $i < $numOfPlayers; $i++) {
     //   echo $playerHasList[$i] . PHP_EOL;
@@ -125,21 +123,11 @@
 
     // いよいよゲームプレイ！！
     // ゲームプレイの各処理の内訳
-    echo PHP_EOL;
-    echo '$playerHasListの内訳' . PHP_EOL;
-    print_r($playerHasList) . PHP_EOL;
-    echo PHP_EOL;
-
-    echo '$playingListの内訳' . PHP_EOL;
-    print_r($playingList) . PHP_EOL;
-    echo PHP_EOL;
 
     $playerNumber = range(1, $numOfPlayers);  // プレイヤーに1から始まる番号を与えて管理しやすくする(0スタートなので)
-    // echo '$playerNumber' . PHP_EOL;
-    // print_r($playerNumber);
     $playerHasWithNumber = array_combine($playerNumber, $playerHasList);  // 各プレイヤーの初期所持数を、1から始まるプレイヤー番号で管理するよう配列を結合
-    echo '各プレイヤーの初期所持数' . PHP_EOL;
-    print_r($playerHasWithNumber);
+    // echo '各プレイヤーの初期所持数' . PHP_EOL;
+    // print_r($playerHasWithNumber);
 
 
     // パスの処理
