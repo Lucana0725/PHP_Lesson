@@ -24,6 +24,17 @@
     }
   }
 
-  
+
+  // 検索結果の表示。該当が無い場合は「検索結果はありません」、該当がある場合はそれらを改行して表示する
+  if(count($collects) == 0) {
+    echo PHP_EOL;
+    echo '検索結果はありません。' . PHP_EOL;
+  } else {
+    foreach($collects as $collect) {
+      echo PHP_EOL;
+      echo '検索結果：' . PHP_EOL;
+      echo $collect . PHP_EOL;
+    }
+  }
 
 ?>
