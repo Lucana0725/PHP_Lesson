@@ -1,8 +1,8 @@
 <?php
 
 // 用意されているデータ
-  $data = array('paizaonlinehackathon');
-  // $data = array('pizza', 'paiza', 'aizu', 'ai', 'sai');
+  // $data = array('paizaonlinehackathon');
+  $data = array('pizza', 'paiza', 'aizu', 'ai', 'sai');
   // $data = array('safe', 'normal', 'test');
 
   echo '入力されたキーワードにヒットするデータを出力します。' . PHP_EOL;
@@ -30,9 +30,9 @@
     echo PHP_EOL;
     echo '検索結果はありません。' . PHP_EOL;
   } else {
+    echo PHP_EOL;
+    echo '検索結果：' . PHP_EOL;
     foreach($collects as $collect) {
-      echo PHP_EOL;
-      echo '検索結果：' . PHP_EOL;
       echo $collect . PHP_EOL;
     }
   }
