@@ -15,28 +15,25 @@
 
   // 与えられるデータ
 
-  // 入力値1
+  // // 入力値1
 
-  // 親カード
-  $parentCards = '5 1';
-  // プレイ回数
-  $nthPlay = 2;
-  // 子カード
-  $childrenCards = array('7 2', '1 4');
+  // // 親カード
+  // $parentCards = '5 1';
+  // // プレイ回数
+  // $nthPlay = 2;
+  // // 子カード
+  // $childrenCards = array('7 2', '1 4');
   
 
 
   // // 入力値2
 
-  // // 親カード
-  // $parentCards = array('7 3');
-  // // プレイ回数
-  // $nthPlay = 4;
-  // // 子カード
-  // $childrenCards = array('7 1', '7 4', '5 3', '10 1');
-
-  // print_r($parentCards);
-  // print_r($childrenCards);
+  // 親カード
+  $parentCards = '7 3';
+  // プレイ回数
+  $nthPlay = 4;
+  // 子カード
+  $childrenCards = array('7 1', '7 4', '5 3', '10 1');
 
 
 
