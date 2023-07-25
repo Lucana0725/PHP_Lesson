@@ -53,4 +53,20 @@
   // print_r($parent);
   // print_r($children);
 
+  echo PHP_EOL;
+  echo '実行結果：' . PHP_EOL;
+
+  for($i = 0; $i < $nthPlay; $i++) {
+    if($parent[0] == $children[$i][0]) {
+      if($parent[1] < $children[$i][1]) {
+        echo 'High' . PHP_EOL;
+      } else {
+        echo 'Low' . PHP_EOL;
+      }
+    } elseif($parent[0] > $children[$i][0]) {
+      echo 'High' . PHP_EOL;
+    } else {
+      echo 'Low' . PHP_EOL;
+    }
+  }
 ?>
