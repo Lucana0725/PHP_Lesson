@@ -18,7 +18,8 @@
   // // 入力値1
 
   // // 親カード
-  // $parentCards = '5 1';
+  // // $parentCards = '5 1';
+  // $parentCards = array('5 1');
   // // プレイ回数
   // $nthPlay = 2;
   // // 子カード
@@ -29,7 +30,7 @@
   // // 入力値2
 
   // 親カード
-  $parentCards = '7 3';
+  $parentCards = array('7 3');
   // プレイ回数
   $nthPlay = 4;
   // 子カード
@@ -40,7 +41,7 @@
 
 
   // 実装
-  $parent = explode(" ", $parentCards);  // 半角スペース区切りで渡ってくる親カードを分割させて配列へ。
+  $parent = explode(" ", $parentCards[0]);  // 半角スペース区切りで渡ってくる親カードを分割させて配列へ。
   $childrenInputs;  // foreach文内で利用する、explodeを用いて子カードを分割したものを入れる変数を定義
   $children = [];  // foreach文内でexplodeを用いて分割した$childrenInputsを格納するための空配列
   foreach($childrenCards as $childCards) {
