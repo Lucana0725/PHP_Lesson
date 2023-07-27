@@ -9,7 +9,7 @@
   // echo 'あなたの所持'
 
 
-  // 与えられるデータ
+  // 与えられるデータ 1
   // 当選番号
   $selectedNumbers = array('1 2 3 4 5 6');
   // 購入枚数
@@ -34,6 +34,21 @@
     $yourSelected = explode(' ', $yourLoto[0]);
     $yourNumbers[] = $yourSelected;
   }
-  print_r($yourNumbers);
+  // print_r($yourNumbers);
+  
+  // 各くじの当選数をカウントする処理
+  $matchCounts = [];  // 当選数を各くじ毎に管理する用
+  foreach($yourNumbers as $yourNumber) {
+    $existCount = 0;  // 当選数のカウント(0で初期化)
+    foreach($yourNumber as $theElement) {
+      if(in_array($theElement, $rewardNumbers)) {
+        $existCount += 1;
+      }
+    }
+    $matchCounts[] = $existCount;
+  }
+
+  print_r($matchCounts);
+
 
 ?>
