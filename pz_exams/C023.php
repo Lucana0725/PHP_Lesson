@@ -15,12 +15,25 @@
   // 購入枚数
   $yourHave = '3';
   // 購入したくじの番号
-  $yourNumbers = array(
+  $yourLotos = array(
     ['1 5 4 2 3 6'],
     ['9 6 2 7 1 5'],
     ['32 9 87 33 41 60']
   );
 
+  // print_r($yourNumbers);
+
+
+
+  // 処理
+  $rewardNumbers = explode(' ', $selectedNumbers[0]);  // 当選番号を1つずつ分割
+  // print_r($rewardNumbers);
+
+  $yourNumbers = [];  // 購入したくじを1つずつ分割、二次元配列に。
+  foreach($yourLotos as $yourLoto) {
+    $yourSelected = explode(' ', $yourLoto[0]);
+    $yourNumbers[] = $yourSelected;
+  }
   print_r($yourNumbers);
 
 ?>
