@@ -15,6 +15,12 @@ function userInputs() {
   $amountOfBought = trim(fgets($input));
   fclose($input);
 
+  // 指定外の購入数が入力された場合は処理を中止する処理
+  if(!filter_var($amountOfBought, FILTER_VALIDATE_INT) || $amountOfBought < 1 || $amountOfBought > 5) {
+    echo '不正な値が入力されました。処理を中止します。' . PHP_EOL;
+    exit;
+  }
+
   echo $amountOfBought . PHP_EOL;  // 入力確認用出力
 
 
