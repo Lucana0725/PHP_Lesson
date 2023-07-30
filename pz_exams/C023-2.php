@@ -33,6 +33,12 @@ function userInputs() {
   $userSelectNum = trim(fgets($input));
   fclose($input);
 
+  // 指定形式(半角スペース区切り)外の入力の場合処理を中止する
+  if(!preg_match('/^(?:(?:[1-9][0-9]?|100)(?:\s|$)){6}$/', $userSelectNum)) {
+    echo '不正な値が入力されました。処理を中断します。' . PHP_EOL;
+    exit;
+  }
+
   echo $userSelectNum . PHP_EOL;  // 入力確認用出力
 
 }
