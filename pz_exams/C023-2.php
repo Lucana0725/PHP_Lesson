@@ -1,5 +1,12 @@
 <?php
 
+// くじの当選番号
+$rewardNumbers = array('72 2 90 84 57 85');
+
+
+
+
+
 // プログラムの説明文
 function explanes() {
   echo '1から100までの数字を6つ選んで当てる宝くじがあります。' . PHP_EOL;
@@ -7,8 +14,12 @@ function explanes() {
   echo '当選番号と一致した数字の数について調べるプログラムが存在しますので、購入枚数と選んだ数字を半角スペース区切りで6つ入力してください。' . PHP_EOL;
 }
 
-// ユーザー入力関連
-function userInputs() {
+
+
+
+
+// ユーザー入力関連 + 処理実行部分
+function userInputsAndExecutions() {
   // 購入数の入力フェーズ
   echo 'まずは購入数を入力してください。(1-5)' . PHP_EOL;
   $input = fopen('php://stdin', 'r');
@@ -27,7 +38,7 @@ function userInputs() {
 
 
 
-  // 数字選択
+  // ユーザーによるくじ番号選択
   echo '次に、一枚あたり6つ、1-100で好きな数字を半角スペース区切りで入力してください。1枚あたりで数字の重複選択はできません。' . PHP_EOL;
   $input = fopen('php://stdin', 'r');
   $userSelect = trim(fgets($input));
@@ -49,6 +60,12 @@ function userInputs() {
 
   print_r($uniqueSelect) . PHP_EOL;  // 入力確認用出力
 
+
+
+
+
+  // 当選番号の検索
+
 }
 
 
@@ -57,7 +74,7 @@ function userInputs() {
 
 // 処理実行部
 explanes();
-userInputs();
+userInputsAndExecutions();
 
 
 ?>
