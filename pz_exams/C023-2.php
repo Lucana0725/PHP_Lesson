@@ -93,8 +93,9 @@ function userInputsAndExecutions() {
     $matchToRewards[] = $existCounts;
   }
   
-  foreach($matchToRewards as $matchToReward) {
-    echo $matchToReward . PHP_EOL;
+  foreach($matchToRewards as $key => $value) {
+    $countKey = $key + 1;  // くじ枚数を0スタートではなく1スタートにする処理
+    echo "{$countKey}枚目には当選番号が{$value}つ存在します。" . PHP_EOL;
   }
 }
 
