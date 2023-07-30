@@ -1,7 +1,8 @@
 <?php
 
 // くじの当選番号
-$rewardNumbers = array('72 2 90 84 57 85');
+// $rewardNumber = '72 2 90 84 57 85';
+$rewardNumbers = array(72, 2, 90, 84, 57, 85);
 
 
 
@@ -40,25 +41,34 @@ function userInputsAndExecutions() {
 
   // ユーザーによるくじ番号選択
   echo '次に、一枚あたり6つ、1-100で好きな数字を半角スペース区切りで入力してください。1枚あたりで数字の重複選択はできません。' . PHP_EOL;
-  $input = fopen('php://stdin', 'r');
-  $userSelect = trim(fgets($input));
-  fclose($input);
 
-  // 指定形式(半角スペース区切り)外の入力の場合処理を中止する
-  if(!preg_match('/^(?:(?:[1-9][0-9]?|100)(?:\s|$)){6}$/', $userSelect)) {
-    echo '不正な値が入力されました。処理を中断します。' . PHP_EOL;
-    exit;
-  } else {
-    // 数字の重複があれば処理を中止する
-    $userSelectNum = explode(" ", $userSelect);
-    $uniqueSelect = array_unique($userSelectNum);
-    if(count($uniqueSelect) !== 6) {
-      echo '重複が発見されました。処理を中断します。' . PHP_EOL;
+  $userSelectNumbers = [];  // ユーザーが入力したくじ番号を格納する空配列
+
+  // 購入枚数分ループする
+  for($i = 0; $i < $amountOfBought; $i++) {
+    $input = fopen('php://stdin', 'r');
+    $userSelect = trim(fgets($input));
+    fclose($input);
+  
+    // 指定形式(半角スペース区切り)外の入力の場合処理を中止する
+    if(!preg_match('/^(?:(?:[1-9][0-9]?|100)(?:\s|$)){6}$/', $userSelect)) {
+      echo '不正な値が入力されました。処理を中断します。' . PHP_EOL;
       exit;
+    } else {
+      // 数字の重複があれば処理を中止する
+      $userSelectNum = explode(" ", $userSelect);
+      $uniqueSelect = array_unique($userSelectNum);
+      if(count($uniqueSelect) !== 6) {
+        echo '重複が発見されました。処理を中断します。' . PHP_EOL;
+        exit;
+      } else {
+         $userSelectNumbers[] = $userSelectNum;  // 指定形式で入力され、且つ重複が存在しないことが確認できたら、ユーザーが入力した番号を$userSelectNumbersへ格納していく。
+      }
     }
+
   }
 
-  print_r($uniqueSelect) . PHP_EOL;  // 入力確認用出力
+  // print_r($userSelectNumbers) . PHP_EOL;  // 入力確認用出力
 
 
 
