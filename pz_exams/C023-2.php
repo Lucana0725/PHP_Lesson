@@ -75,7 +75,27 @@ function userInputsAndExecutions() {
 
 
   // 当選番号の検索
+  // global $rewardNumber;
+  // $rewardNumbers = explode(' ', $rewardNumber);
+  global $rewardNumbers;  // $rewardNumbersをグローバル変数として宣言
+  // print_r($rewardNumbers);
 
+  $matchToRewards = [];  // くじごとに当選番号がいくつあるかを保持する空配列
+
+  // 当選番号が含まれているかを確認していくループ処理
+  foreach($userSelectNumbers as $userSelectNumber) {
+    $existCounts = 0;
+    foreach($userSelectNumber as $theElement) {  // $userSelectNumbersの各要素(配列)に対するループ
+      if(in_array($theElement, $rewardNumbers)) {
+        $existCounts++;
+      }
+    }
+    $matchToRewards[] = $existCounts;
+  }
+  
+  foreach($matchToRewards as $matchToReward) {
+    echo $matchToReward . PHP_EOL;
+  }
 }
 
 
