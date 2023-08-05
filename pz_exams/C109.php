@@ -25,7 +25,17 @@ foreach($userIDs as $userID) {
   $result = preg_replace('/[^a-zA-Z]/', '', $userID);
   $userNames[] = $result;
 }
-print_r($userNames);
+// print_r($userNames);
 
+
+// ユーザーIDを通し番号でソートし、結合させて表示する
+array_multisort($userNumbers, SORT_NUMERIC, $userNames, SORT_STRING, $userIDs);
+
+echo PHP_EOL;
+echo '答え：' . PHP_EOL;
+
+foreach($userIDs as $userID) {
+  echo $userID . PHP_EOL;
+}
 
 ?>
