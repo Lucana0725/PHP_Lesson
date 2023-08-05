@@ -10,4 +10,13 @@ foreach($userIDs as $userID) {
 }
 
 
+// ユーザーIDの数字だけ抜き取る
+$userNumbers = [];
+foreach($userIDs as $userID) {
+  $result = preg_replace('/[^0-9]/', '', $userID);
+  $userNumbers[] = $result;
+}
+print_r($userNumbers);
+
+
 ?>
